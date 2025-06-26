@@ -10,7 +10,7 @@ luna-del-elys/
 ├── postcss.config.js
 ├── components.json
 ├── drizzle.config.ts
-├── replit.md
+├── luna.md
 ├── shared/
 │   └── schema.ts
 ├── server/
