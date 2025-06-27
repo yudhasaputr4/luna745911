@@ -1,10 +1,8 @@
-// vite.config.ts
 import { defineConfig } from "vite"
 import react from "@vitejs/plugin-react"
 import path from "path"
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal"
 
-// Replit-specific plugin (optional & safe)
 export default defineConfig(async () => {
   const replitPlugins =
     process.env.NODE_ENV !== "production" && process.env.REPL_ID !== undefined
@@ -24,13 +22,16 @@ export default defineConfig(async () => {
       },
     },
     build: {
-      outDir: path.resolve(__dirname, "dist"), // ✅ hasil untuk GitHub Pages
+      outDir: path.resolve(__dirname, "dist"),
       emptyOutDir: true,
+      rollupOptions: {
+        input: path.resolve(__dirname, "client", "index.html"), // ✅ ini bagian penting
+      },
     },
     server: {
       fs: {
         strict: true,
-        deny: ["**/.*"], // ⛔ hidden files
+        deny: ["**/.*"],
       },
     },
   }
